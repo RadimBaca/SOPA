@@ -1,22 +1,5 @@
 import numpy
 
-# Nacteni dat ze vstupniho souboru a vytvoreni matice sousednosti
-def read_matrix(filename):
-    file = open(filename)
-    maxn = 0
-    data = [] # Vytvoreni prazdneho listu
-    for line in file:
-        vertex1, vertex2, weight = map(int, line.split(";")) # Rozdeleni radku a pretypovani na int
-        maxn = max(vertex1, maxn, vertex2)
-        data.append((vertex1, vertex2, weight)) # Vlozeni trojice `(vertex1, vertex1, weight)` do listu `data`
-    file.close()
-    # Vytvoreni matice sousednosti
-    matrix = numpy.zeros((maxn + 1, maxn + 1), dtype = "uint32") # Vytvoreni prazdne numpy matice
-    ### BEGIN TODO ukol 1
-	### Naplnte matici na zaklade trojic ulozenych v listu `data`
-    ### END TODO ukol 1
-    return matrix
-
 
 ### `Breath-first search` algoritmus (dále jen BFS) pro hledani prumeru nevazeneho grafu. 
 ### Vstupem je matice sousednosti a vychozi uzel.
@@ -44,8 +27,8 @@ for start in range(1,karate.shape[0]): # vsimnete si, ze zde provadime pruchod a
     distance_sum = distance_sum + sum(bfs(karate, start)) # provadime sumu nejkratsich vzdalenosti
 
 pocet_hran = (karate.shape[0] - 1) * (karate.shape[0] - 1) - (karate.shape[0] - 1) # nulty radek matice neodpovida zadne osobe, proto minus jedna. Do prumerne vzdalenosti v grafu se pak nezapocitavaji ani vzdalenosti mezi stejnym vrcholem.
-print('Prumerna vzdalenost v grafu je {}'.format(float(distance_sum) / pocet_hran))
+print('Prumerna nejkratsi vzdalenost v grafu je {}'.format(float(distance_sum) / pocet_hran))
 
 
 # Ocekavany vystup spravneho reseni je
-# Prumerna vzdalenost v grafu je 2.408199643493761
+# Prumerna nejkratsi vzdalenost v grafu je 2.408199643493761
