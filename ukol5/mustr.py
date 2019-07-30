@@ -29,7 +29,7 @@ def bfs(distance_matrix, start):
     while len(queue) - queue_start > 0:
         from_v, distance = queue[queue_start]
         queue_start = queue_start + 1
-        for to_v in range(distance_matrix.shape[0]): # snazime se najit nenavstivene sousedy vrcholu `from_to`
+        for to_v in range(distance_matrix.shape[0]): # snazime se najit nenavstivene sousedy vrcholu `from_v`
             ### BEGIN TODO 4
 			### Doimplementujte BFS:
 			###   - kontrola zda-li byl uzel `to_v` navstiven a zda-li je mezi `from_v` a `to_v` hrana
@@ -40,12 +40,10 @@ def bfs(distance_matrix, start):
 
 karate = read_matrix("..\data\karate.csv") # nacteme karate graf, jelikoz ten je nevazeny 
 distance_sum = 0
-for start in range(1,karate.shape[0]): # vsimnete si, ze zde provadime pruchod az od cisla jedna
-    distance_sum = distance_sum + sum(bfs(karate, start)) # provadime sumu nejkratsich vzdalenosti
+for start in range(karate.shape[0]):
+    distance_sum = distance_sum + sum(bfs(karate, 1)) # provadime sumu nejkratsich vzdalenosti
 
-pocet_hran = (karate.shape[0] - 1) * (karate.shape[0] - 1) - (karate.shape[0] - 1) # nulty radek matice neodpovida zadne osobe, proto minus jedna. Do prumerne vzdalenosti v grafu se pak nezapocitavaji ani vzdalenosti mezi stejnym vrcholem.
-print('Prumerna vzdalenost v grafu je {}'.format(float(distance_sum) / pocet_hran))
+print('Prumerna vzdalenost v grafu je {}'.format(float(distance_sum) / (karate.shape[0] * karate.shape[0])))
 
-
-# Ocekavany vystup spravneho reseni je
-# Prumerna vzdalenost v grafu je 2.408199643493761
+# Ocekavany vystup spravneho reseni je:
+# Prumerna vzdalenost v grafu je 1.6571428571428573
