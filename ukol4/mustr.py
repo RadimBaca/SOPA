@@ -13,10 +13,11 @@ def bfs(distance_matrix, start):
         from_v, distance = queue[queue_start]
         queue_start = queue_start + 1
         for to_v in range(distance_matrix.shape[0]): # snazime se najit nenavstivene sousedy vrcholu `from_to`
+            raise NotImplementedError
             ### BEGIN TODO 4
-			### Doimplementujte BFS:
-			###   - kontrola zda-li byl uzel `to_v` navstiven a zda-li je mezi `from_v` a `to_v` hrana
-			###   - pokud ano, nastavte všechny datové struktury dle algoritmu
+            ### Doimplementujte BFS:
+            ###   - kontrola zda-li byl uzel `to_v` navstiven a zda-li je mezi `from_v` a `to_v` hrana
+            ###   - pokud ano, nastavte všechny datové struktury dle algoritmu
             ### END TODO 4
 
     return distances
