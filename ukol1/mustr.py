@@ -2,33 +2,32 @@ import numpy
 
 # Nacteni dat ze vstupniho souboru a vytvoreni matice sousednosti
 def read_matrix(filename):
-    file = open(filename)
-    maxn = 0
-    data = [] # Vytvoreni prazdneho listu
-    for line in file:
-        vertex1, vertex2, weight = map(int, line.split(";")) # Rozdeleni radku a pretypovani na int
-        maxn = max(vertex1, maxn, vertex2)
-        data.append((vertex1, vertex2, weight)) # Vlozeni trojice `(vertex1, vertex1, weight)` do listu `data`
-    file.close()
-    # Vytvoreni matice sousednosti
-    matrix = numpy.zeros((maxn + 1, maxn + 1), dtype = "uint32") # Vytvoreni prazdne numpy matice
-    ### BEGIN TODO 1
-	### Naplnte matici na zaklade trojic ulozenych v listu `data`
-    ### END TODO 1
-    return matrix
+    with open(filename) as file:
+        maxn = 0
+        data = [] # Vytvoreni prazdneho listu
+        for line in file:
+            vertex1, vertex2, weight = map(int, line.split(";")) # Rozdeleni radku a pretypovani na int
+            maxn = max(vertex1, maxn, vertex2)
+            data.append((vertex1, vertex2, weight)) # Vlozeni trojice `(vertex1, vertex1, weight)` do listu `data`
+        # Vytvoreni matice sousednosti
+        matrix = numpy.zeros((maxn + 1, maxn + 1), dtype = "uint32") # Vytvoreni prazdne numpy matice
+        ### BEGIN TODO 1
+        ### Naplnte matici na zaklade trojic ulozenych v listu `data`
+        ### END TODO 1
+        return matrix
 
 # Nacteni jmen ze souboru a ulozeni v map
 # TODO 2 - tato funkce obsahuje trivialni chybu, zkuste opravit
 def read_names(filename):
-    file = open(filename)
-    names = {} # Vytvoreni prazdne mapy
-    file.readline()
-    for line in file:
-        order, name = line.split(",") # Rozdeleni radku nacteneho ze souboru
-        order = int(order) 
-        name = name.rstrip()
-        names[order] = name # Ulozeni v mape `names`, pro dany klic `order` ulozime hodnotu `name`
-    return names
+    with open(filename) as file:
+        names = {} # Vytvoreni prazdne mapy
+        file.readline()
+        for line in file:
+            order, name = line.split(",") # Rozdeleni radku nacteneho ze souboru
+            order = int(order)
+            name = name.rstrip()
+            names[order] = name # Ulozeni v mape `names`, pro dany klic `order` ulozime hodnotu `name`
+        return names
 
 # Volani predchozich funkci
 matrix = read_matrix("../data/lesmis.csv")

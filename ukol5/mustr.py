@@ -10,7 +10,7 @@ def FloydWarshall(filename):
                 distance[i][j] = pow(2,30) # nastaveni hodnoty 2^30
 
     ### BEGIN TODO 5
-	### Implementujte Floyd-Warshall algoritmus
+    ### Implementujte Floyd-Warshall algoritmus
     ### END TODO 5
     return distance
 
