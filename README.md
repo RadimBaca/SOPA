@@ -6,7 +6,7 @@ Aby jste mohli úkoly řešit na svém počítači tak nejprve provedete stáhnu
 $ git clone https://github.com/RadimBaca/SOPA
 $ cd sopa
 ```
-Nejprve si v Linuxu otevřete stažený pdf soubor popis_ukolu.pdf, kde se nachází podrobný popis jednotlivých úkolů. Následně otevřeme vývojové prostředí Visual Studio Code (VSC)
+Nejprve si v Linuxu otevřete stažený pdf soubor `popis_ukolu.pdf`, kde se nachází podrobný popis jednotlivých úkolů. Následně otevřeme vývojové prostředí Visual Studio Code (VSC).
 
 ```bash
 $ code
